@@ -1,0 +1,83 @@
+.container {
+    max-width: 50rem;
+    margin: 0 auto;
+    padding: 2.5rem;
+    background-color: #1b1b2f;
+    border-radius: .5rem;
+    box-shadow: 0 .25rem .375rem rgba(0, 0, 0, 0.1);
+    color: #fff;
+  }
+  
+.title {
+    margin-top: -1rem;
+    margin-bottom: 1.25rem;
+    color: white;
+    font-size: 1.75rem;
+    text-align: center;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.movieList {
+    list-style: none;
+    padding: 0;
+}
+
+.movieItem {
+    background-color: #162447;
+    margin-bottom: .938rem;
+    padding: 1.25rem;
+    border-radius: .313rem;
+    transition: transform 0.2s;
+}
+
+.movieItem:hover {
+    transform: translateY(-.313rem);
+}
+
+.movieTitle {
+    margin: 0 0 .625rem 0;
+    font-size: 1.25rem;
+    color: #65edff;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.ratingDisplay {
+    margin-bottom: .625rem;
+    color: #ec7e90;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.inputRating, .button {
+    padding: .625rem;
+    border: none;
+    border-radius: .313rem;
+    margin-right: .625rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.inputRating {
+    width: 5.625rem;
+}
+
+.deleteButton {
+    cursor: pointer;
+    background-color: #e94560;
+    color: white;
+}
+
+.deleteButton:hover {
+    background-color: #ef8c8c;
+    color: black;
+}
+
+.saveButton {
+    cursor: pointer;
+    background-color: #65edff;
+    color: black;
+}
+    
+.saveButton:hover {
+    background-color: #04b1c8;
+    color: rgb(255, 255, 255);
+}
+  
