@@ -7,7 +7,7 @@ function ScifiMoviesList() {
   const [ratings, setRatings] = useState({});
   const [inputValues, setInputValues] = useState({});
   const [reviewsByMovieId, setReviewsByMovieId] = useState({});
-  const api_key = 'ab59f4edec34ee271cc30d89d81eeceb';
+  const api_key = process.env.REACT_APP_API_KEY;
   const base_url = 'https://api.themoviedb.org/3';
 
   // Generalized Axios request function
