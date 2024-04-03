@@ -6,6 +6,7 @@ function ScifiMoviesList() {
   const [movies, setMovies] = useState([]);
   const [ratings, setRatings] = useState({});
   const [inputValues, setInputValues] = useState({});
+  const [reviewsByMovieId, setReviewsByMovieId] = useState({});
   const api_key = 'ab59f4edec34ee271cc30d89d81eeceb';
   const base_url = 'https://api.themoviedb.org/3';
 
@@ -64,9 +65,40 @@ function ScifiMoviesList() {
     setInputValues((prev) => ({ ...prev, [movieId]: '' }));
   };
 
+  const fetchReviews = async (movieId) => {
+    const endpoint = `movie/${movieId}/reviews`;
+    const data = await makeApiRequest(endpoint, 'get', { language: 'en-US', page: 1 });
+    if (data) {
+      console.log(`Fetched Reviews for Movie ID ${movieId}:`, data.results);
+      setReviewsByMovieId(prevReviews => ({
+        ...prevReviews,
+        [movieId]: data.results,
+      }));
+    } else {
+      setReviewsByMovieId(prevReviews => ({
+        ...prevReviews,
+        [movieId]: [],
+      }));
+    }
+  };  
+
+  const clearReviews = (movieId) => {
+    if(reviewsByMovieId[movieId]) {
+      console.log(`Clearing Reviews for Movie ID ${movieId}:`, reviewsByMovieId[movieId]);
+    } else {
+      console.log(`No Reviews to Clear for Movie ID ${movieId}`);
+    }
+  
+    setReviewsByMovieId(prevReviews => {
+      const newState = { ...prevReviews };
+      delete newState[movieId]; 
+      return newState;
+    });
+  };  
+
   return (
     <div className="container">
-      <h2 className="title">Check These Out...</h2>
+      <h2 className="title">Check These Out</h2>
       <ul className="movieList">
         {movies.map((movie) => (
           <li key={movie.id} className="movieItem">
@@ -81,11 +113,26 @@ function ScifiMoviesList() {
             />
             <button onClick={() => saveRating(movie.id)} className="button saveButton">Save Rating</button>
             <button onClick={() => deleteRating(movie.id)} className="button deleteButton">Delete Rating</button>
+            <button onClick={() => fetchReviews(movie.id)} className="button viewReviewsButton">View Reviews</button>
+            <button onClick={() => clearReviews(movie.id)} className="button clearReviewsButton">Clear Reviews</button>
+            {reviewsByMovieId.hasOwnProperty(movie.id) ? (
+              reviewsByMovieId[movie.id].length > 0 ? (
+                <div className="reviewsSection">
+                  {reviewsByMovieId[movie.id].map(review => (
+                    <div key={review.id} className="reviewItem">
+                      <p><strong>{review.author}</strong>: {review.content}</p>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <p>No reviews available for this movie.</p>
+              )
+            ) : null}
           </li>
         ))}
       </ul>
     </div>
-  );
+  );  
 }
 
 export default ScifiMoviesList;

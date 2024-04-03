@@ -70,6 +70,24 @@
     color: black;
 }
 
+.clearReviewsButton {
+    cursor: pointer;
+    background-color: #e22040;
+    color: white;
+}
+
+.clearReviewsButton:hover {
+    background-color: white;
+    color: black;
+}
+
+.viewReviewsButton:hover {
+    cursor: pointer;
+    background-color: #04b1c8;
+    color: black;
+}
+
+
 .saveButton {
     cursor: pointer;
     background-color: #65edff;
@@ -80,4 +98,12 @@
     background-color: #04b1c8;
     color: rgb(255, 255, 255);
 }
-  
+
+h3 {
+    margin-bottom: .25rem;
+}
+
+.review {
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size: .8rem;
+}
