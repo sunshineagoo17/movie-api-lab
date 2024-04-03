@@ -1,5 +1,5 @@
 import React from 'react';
-import ScifiMoviesList from './Components/MoviesList/ScifiMoviesList';
+import ScifiMoviesList from './Components/ScifiMoviesList/ScifiMoviesList';
 import "./App.scss";
 
 function App() {
