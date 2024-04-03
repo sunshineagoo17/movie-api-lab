@@ -96,6 +96,19 @@ function ScifiMoviesList() {
     });
   };  
 
+  const fetchMovieProviders = async () => {
+    try {
+      const data = await makeApiRequest('watch/providers/movie', 'get', { language: 'en-US' });
+      console.log('Fetched Movie Providers:', data);
+    } catch (error) {
+      console.error('Failed to fetch movie providers:', error);
+    }
+  };
+
+  useEffect(() => {
+    fetchMovieProviders(); 
+  });  
+
   return (
     <div className="container">
       <h2 className="title">Check These Out</h2>
