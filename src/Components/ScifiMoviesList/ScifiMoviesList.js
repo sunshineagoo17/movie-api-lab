@@ -17,13 +17,13 @@ function ScifiMoviesList() {
       method,
       url,
       headers: {
-        'Authorization': `Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhYjU5ZjRlZGVjMzRlZTI3MWNjMzBkODlkODFlZWNlYiIsInN1YiI6IjY2MGIzOGYzYWUzODQzMDE2MzFkNzg1OSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.ze4ufM7sH2VrvqdorKIiVIcDR5GzuS0FNtMlCPlp3Lo`,
+        'Authorization': `Bearer ${process.env.REACT_APP_TMDB_BEARER_TOKEN}`,
         'Content-Type': 'application/json;charset=utf-8',
       },
       params: method === 'get' ? { api_key, ...data } : {},
       data: method !== 'get' ? data : {},
     };
-
+    
     try {
       const response = await axios(config);
       return response.data;
